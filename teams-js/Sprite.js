@@ -51,7 +51,7 @@ class Sprite {
   updateAnimationProgress(){
     //downtixk frame progress
     if(this.animationFrameProgress > 0){
-      this.animationFrameProgress -= 8
+      this.animationFrameProgress -= 3
       return;
     }
 
