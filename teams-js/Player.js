@@ -4,10 +4,10 @@ class Player extends GameObjects {
     this.tileProgressRemaining = 0
     this.isStanding = false
     this.directionUpdate = {
-      "up": ["y", -2],
-      "down": ["y", 2],
-      "left": ["x", -2],
-      "right": ["x", 2],
+      "up": ["y", -1.01],
+      "down": ["y", 1.01],
+      "left": ["x", -1.01],
+      "right": ["x", 1.01,
     }
   }
 
