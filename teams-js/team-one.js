@@ -68,10 +68,6 @@ class Game {
 const game = new Game({element: document.querySelector('.canvas')})
 game.start()
 
-const BackButton = document.querySelector('.btn-container')
-BackButton.addEventListener('click', () => {
-  window.location.href = 'teams/index.html'
-})
 
 
 
