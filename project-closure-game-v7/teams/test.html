@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Closure Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+    }
+
+    .quiz-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 600px;
+      user-select: none;
+    }
+
+    .question {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+      margin-right: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #result {
+      font-size: 22px;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .nav-buttons {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <div id="quiz"></div>
+    <div class="nav-buttons">
+      <button onclick="history.back()">Back to Main</button>
+      <button id="back-btn">Previous</button>
+      <button id="next-btn">Next</button>
+      <button id="finish-btn" style="display:none">Finish</button>
+    </div>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const questions = [
+      { text: "What do you call the last meeting at the end of a project?", options: ["First meeting", "Quick chat", "Look-back meeting (Retrospective)", "Game night"], answer: 2 },
+      { text: "What paper says the project is done and everything is finished?", options: ["To-do list", "Group chat", "Project Finish Report", "Budget Plan"], answer: 2 },
+      { text: "Who says the project is finished and gives final approval?", options: ["Team helper", "School janitor", "Client or boss", "Classmate"], answer: 2 },
+      { text: "When does the closing part of a project start?", options: ["At the beginning", "When the plan is written", "After the work is all done", "During the team meeting"], answer: 2 },
+      { text: "Why is it important to share what we learned at the end?", options: ["So others don’t make the same mistakes", "To fill up time", "To tell jokes", "To restart the project"], answer: 0 },
+      { text: "When are project files and documents saved or organized?", options: ["At the start", "In the middle", "At the end", "During testing"], answer: 2 },
+      { text: "What does a 'Lessons Learned' document help with?", options: ["Tells jokes", "Talks about who joined late", "Shares what went right or wrong", "Says who was late"], answer: 2 },
+      { text: "Which of these is NOT part of ending a project?", options: ["Letting people go to new work", "Checking final work", "Writing the first plan", "Doing a review"], answer: 2 },
+      { text: "Why should the team meet after the project is over?", options: ["To talk about what went well and what didn’t", "To take selfies", "To find mistakes in the plan", "To start a new project"], answer: 0 },
+      { text: "What happens to money left at the end of a project?", options: ["It’s used for snacks", "It’s deleted", "It goes back or is saved", "It’s given to the last person"], answer: 2 },
+      { text: "Who usually leads the final team meeting?", options: ["The teacher", "A helper", "The Project Leader", "The quietest person"], answer: 2 },
+      { text: "Why is the last report helpful?", options: ["It reminds us of the good and bad", "It’s funny", "It’s a school rule", "It helps us sleep"], answer: 0 },
+      { text: "What might happen if a project isn’t closed the right way?", options: ["You get extra time", "Everyone gets pizza", "Mistakes can happen again in the future", "Nothing at all"], answer: 2 },
+      { text: "Which of these proves the work was really finished?", options: ["A smile", "A thank you note", "A signed approval", "A handshake"], answer: 2 },
+      { text: "How can you tell if a project was successful?", options: ["Everyone was happy", "You stayed on budget and finished on time", "You had fun", "The class liked it"], answer: 1 },
+      { text: "In group work like Agile, what meeting do you do after the project ends?", options: ["Party meeting", "Quick fix", "Review (Retrospective)", "Fixing errors"], answer: 2 },
+      { text: "How can a team save what they learned?", options: ["Don’t save anything", "Make a shared folder or document", "Just tell each other", "Keep it secret"], answer: 1 },
+      { text: "When should you ask the client or teacher for feedback?", options: ["At the start", "After they approve everything", "After you turn in your plan", "In the middle"], answer: 1 }
+    ];
+
+    let current = 0;
+    let score = 0;
+
+    const quizContainer = document.getElementById("quiz");
+    const nextBtn = document.getElementById("next-btn");
+    const backBtn = document.getElementById("back-btn");
+    const finishBtn = document.getElementById("finish-btn");
+    const result = document.getElementById("result");
+
+    function showQuestion(index) {
+      const q = questions[index];
+      quizContainer.innerHTML = `<p class="question">${index + 1}. ${q.text}</p>` +
+        q.options.map((opt, i) => `
+          <label><input type="radio" name="answer" value="${i}"> ${opt}</label>
+        `).join("");
+      backBtn.style.display = index > 0 ? "inline-block" : "none";
+    }
+
+    function getSelected() {
+      const selected = document.querySelector('input[name="answer"]:checked');
+      return selected ? parseInt(selected.value) : null;
+    }
+
+    nextBtn.addEventListener("click", () => {
+      const selected = getSelected();
+      if (selected === null) return alert("Please select an answer before continuing.");
+      if (selected === questions[current].answer) score++;
+      current++;
+      if (current < questions.length - 1) {
+        showQuestion(current);
+      } else {
+        showQuestion(current);
+        nextBtn.style.display = "none";
+        finishBtn.style.display = "inline-block";
+      }
+    });
+
+    backBtn.addEventListener("click", () => {
+      if (current > 0) {
+        current--;
+        showQuestion(current);
+      }
+    });
+
+    finishBtn.addEventListener("click", () => {
+      const selected = getSelected();
+      if (selected === null) return alert("Please select an answer before finishing.");
+      if (selected === questions[current].answer) score++;
+      quizContainer.innerHTML = "";
+      finishBtn.style.display = "none";
+      result.innerHTML = `You scored ${score}/${questions.length} (${Math.round((score / questions.length) * 100)}%)`;
+    });
+
+    showQuestion(current);
+  </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+*{
+  image-rendering: pixelated;
+  user-select: none;
+}
+:root{
+  --border-color: #291D4D;
+  --dialog-background: #FFF384;
+
+  --menu-background: #FFE8D2;
+  --menu-border-color: #A48465;
+  --menu-font-color: #3A160D;
+  --menu-selected-background: #7fc2ff;
+
+}
+.green{
+  color: green
+}
+.whitee{
+  color:white
+}
+.Notcomplete{
+  color: red
+}
+.Notcomplete1{
+  color: yellow
+}
+.Notcomplete2{
+  color: blue
+}
+.Notcomplete3{
+  color: purple
+}
+body, .canvas, #msgInstr { 
+  font-family: 'Pixelify Sans', sans-serif;
+}
+.canvas{
+  box-shadow: 15px 15px 15px hsl(240, 56%, 12%);
+  background-color: hsl(240, 56%, 12%);
+  border-radius: 25px;
+  position: relative; /* Ensures child elements are positioned relative to this */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border: 20px solid hsl(240, 56%, 12%);
+}
+body{
+  display: flex;
+  justify-content: center;
+  background-color: rgb(26, 26, 64);
+}
+
+
+button{
+  margin: 0.8%;
+  border-radius: 15px;
+  font-family: cursive;
+  font-weight: 550;
+  font-size: 20px;
+  word-wrap: normal;
+  cursor: pointer;
+  border:none;
+  white-space: nowrap;
+  letter-spacing: 2px;
+  }
+
+  .go-back{
+    box-shadow: 2px 3px 5px rgba(255, 36, 20, 0.932);
+    width: 45%;
+    background-color: white;
+    color: rgba(255, 36, 20, 0.932);
+    transition: background-color, width, color, box-shadow, 0.5s;
+  }
+  .go-back:hover{
+    width:50%;
+    background-color: rgba(255, 36, 20, 0.932);
+    color: white;
+    box-shadow: 5px 6px 5px rgba(203, 23, 10, 0.932);
+  }
+  .go-back:active{
+    opacity: 0.7;
+  }

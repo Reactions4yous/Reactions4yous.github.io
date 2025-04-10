@@ -1,0 +1,101 @@
+button{
+margin: 0.8%;
+border-radius: 15px;
+font-family: cursive;
+font-weight: 550;
+font-size: 20px;
+word-wrap: normal;
+cursor: pointer;
+border:none;
+white-space: nowrap;
+letter-spacing: 2px;
+}
+.btn-red{
+  box-shadow: 2px 3px 5px rgba(255, 36, 20, 0.932);
+  width: 45%;
+  background-color: white;
+  color: rgba(255, 36, 20, 0.932);
+  transition: background-color, width, color, box-shadow, 0.5s;
+}
+.btn-red:hover{
+  width:50%;
+  background-color: rgba(255, 36, 20, 0.932);
+  color: white;
+  box-shadow: 5px 6px 5px rgba(203, 23, 10, 0.932);
+}
+.btn-red:active{
+  opacity: 0.7;
+}
+.btn-blue{
+  box-shadow: 2px 3px 5px rgba(35, 0, 210, 0.932);
+  width: 45%;
+  background-color: white;
+  color: rgba(35, 0, 210, 0.932);
+  transition: background-color, color, box-shadow, 0.5s;
+}
+.btn-blue:hover{
+  width:50%;
+  background-color: rgba(35, 0, 210, 0.932);
+  color: white;
+  box-shadow: 5px 6px 5px rgba(28, 1, 161, 0.932);
+}
+.btn-blue:active{
+  opacity: 0.7;
+}
+.btn-yellow{
+  box-shadow: 2px 3px 5px rgba(240, 255, 33, 0.932);
+  width: 45%;
+  background-color: white;
+  color: rgba(240, 255, 33, 0.932);
+  transition: background-color, color, box-shadow, 0.5s;
+}
+.btn-yellow:hover{
+  width:50%;
+  background-color: rgba(255, 251, 40, 0.932);
+  color: white;
+  box-shadow: 5px 6px 5px rgba(195, 192, 9, 0.932);
+}
+.btn-yellow:active{
+  opacity: 0.7;
+}
+.btn-green{
+  box-shadow: 2px 3px 5px rgba(16, 162, 16, 0.932);
+  width: 45%;
+  background-color: white;
+  color: rgba(19, 201, 19, 0.932);
+  transition: background-color, color, box-shadow, 0.5s;
+}
+.btn-green:hover{
+  width:50%;
+  background-color: rgba(19, 201, 19, 0.932);
+  color: white;
+  box-shadow: 5px 6px 5px rgba(16, 162, 16, 0.932);
+}
+.btn-green:active{
+  opacity: 0.7;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: auto;
+  transform: translateY(100%) scale(2);
+  width: 30%;
+  border-radius: 10px;
+  background-color: rgb(239, 239, 239);
+  box-shadow: 5px 5px 5px rgba(158, 158, 158, 0.815);
+}
+.title-container{
+  text-shadow: 1px 1px 2px rgba(234, 210, 198, 0.932);
+  color:rgba(181, 157, 145, 0.932);
+  font-weight: 500;
+  font-family: cursive;
+  text-align: center;
+}
+.main-container{
+  display: flex;
+  flex-direction: column;
+}
+*{
+  user-select: none;
+}
