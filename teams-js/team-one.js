@@ -70,7 +70,7 @@ game.start()
 
 const BackButton = document.querySelector('.btn-container')
 BackButton.addEventListener('click', () => {
-  window.location.href = '/index.html'
+  window.location.href = 'index.html'
 })
 
 
