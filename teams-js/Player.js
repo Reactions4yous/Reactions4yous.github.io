@@ -7,7 +7,7 @@ class Player extends GameObjects {
       "up": ["y", -0.31],
       "down": ["y", 0.31],
       "left": ["x", -0.31],
-      "right": ["x", 0.31],
+      "right": ["x", 0.311],
     }
   }
 
